@@ -23,21 +23,46 @@ for code in codes :
 
         2 == 2
 
-    if ((code [0] == ".") and (".title" in code) and ("=" in code)) :
+    if ((code.startswith ("." == True) and ("=" in code) :
 
-        global title
-        title = str (code.replace (".title" , "").replace ("=", "").lstrip ().rstrip ())
+	if (".title" in code) :
 
-        x.write ("""<!DOCTYPE html>
+		global title
+		title = str (code.replace (".title", "").rstrip ().lstrip ()
 
-         <html lang = "en">
-         
-         <head>
+	if (".content" in code) or (".body" in code) :
 
-             <meta charset="UTF-8">
-	         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-	         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		global body
+		body = str (code.replace (".body", "").rstrip ().lstrip ().replace ("\n", "<br> </br>")
+       
+global html_content
+html_content = """
+<!DOCTYPE html>
+<html lang = "en">
+<head>
 
-          <title>""" + title + """</title>""")
-        
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    
+    <title> {title} </title>
+
+    <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel = "stylesheet" integrity = "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin = "anonymous">
+
+    <script src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity = "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin = "anonymous"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity = "sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin = "anonymous"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity = "sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin = "anonymous"></script>	
+    
+</head>
+
+<body>
+    
+    {body}
+    
+</body>
+
+</html>
+"""
+x.write (html_content)
 x.close ()
+
+webbrowser.open ("C:\\Users\\Admin\\index.html")
